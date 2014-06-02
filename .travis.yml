@@ -1,0 +1,6 @@
+language:
+    - cpp
+
+script:
+    - pwd
+    - echo "hello"
