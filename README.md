@@ -1,4 +1,3 @@
-toolchain-table
-===============
 
-Available CMake toolchains table (https://github.com/ruslo/polly)
+* https://github.com/ruslo/polly/wiki/Travis-support-table
+* https://github.com/ruslo/polly
