@@ -37,7 +37,7 @@ install:
     # -- end
 
 script:
-    - cmake -H. -B_builds -DCMAKE_TOOLCHAIN_FILE=${TOOLCHAIN} -DCMAKE_VERBOSE_MAKEFILE=ON
+    - cmake -H. -B_builds -DCMAKE_TOOLCHAIN_FILE=${POLLY_ROOT}/${TOOLCHAIN}.cmake -DCMAKE_VERBOSE_MAKEFILE=ON
     - cmake --build _builds
     - cd _builds
     - ctest -VV -C ${BUILD_TYPE}
