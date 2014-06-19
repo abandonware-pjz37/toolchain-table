@@ -40,7 +40,7 @@ install:
     - cmake --version
     # -- end
     # install cmake toolchains
-    - POLLY_VERSION="0.3.1"
+    - POLLY_VERSION="0.4.0"
     - wget https://github.com/ruslo/polly/archive/v${POLLY_VERSION}.tar.gz
     - tar xf v${POLLY_VERSION}.tar.gz
     - export POLLY_ROOT=`pwd`/polly-${POLLY_VERSION}
