@@ -1,5 +1,9 @@
+# Linux
 language:
-    - cpp
+    - python
+
+python:
+    - "3.3"
 
 env:
     - TOOLCHAIN=default
