@@ -9,7 +9,7 @@ python:
 env:
     - TOOLCHAIN=default
     # - TOOLCHAIN=libcxx, Not fully supported on linux: https://github.com/travis-ci-tester/travis-test-clang-with-libcxx
-    - TOOLCHAIN=clang-libstdcxx
+    - TOOLCHAIN=clang_libstdcxx
     # - TOOLCHAIN=gcc, Not fully supported on Linux: https://github.com/travis-ci-tester/travis-test-gcc-cxx-11
     - TOOLCHAIN=gcc48
     - TOOLCHAIN=analyze
