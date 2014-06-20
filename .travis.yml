@@ -8,9 +8,9 @@ python:
 
 env:
     - TOOLCHAIN=default
-    - TOOLCHAIN=libcxx
+    # - TOOLCHAIN=libcxx, Not fully supported on linux: https://github.com/travis-ci-tester/travis-test-clang-with-libcxx
     - TOOLCHAIN=clang-libstdcxx
-    - TOOLCHAIN=gcc
+    # - TOOLCHAIN=gcc, Not fully supported on Linux: https://github.com/travis-ci-tester/travis-test-gcc-cxx-11
     - TOOLCHAIN=gcc48
     - TOOLCHAIN=analyze
     - TOOLCHAIN=sanitize_address
@@ -24,10 +24,13 @@ install:
     - sudo apt-get update
     - sudo apt-get install g++-4.8
     # -- end
+    # https://github.com/travis-ci-tester/travis-test-clang-cxx-11
+    - sudo apt-get install libstdc++-4.8-dev
+    # -- end
     - sudo apt-get install cmake
     - sudo apt-get install libcurl3-dev
     # install cmake toolchains and script
-    - POLLY_VERSION="0.4.2"
+    - POLLY_VERSION="0.4.3"
     - wget "https://github.com/ruslo/polly/archive/v${POLLY_VERSION}.tar.gz"
     - tar xf "v${POLLY_VERSION}.tar.gz"
     - export POLLY_ROOT="`pwd`/polly-${POLLY_VERSION}"
