@@ -8,9 +8,7 @@ python:
 
 env:
     - TOOLCHAIN=default
-    # - TOOLCHAIN=libcxx, Not fully supported on linux: https://github.com/travis-ci-tester/travis-test-clang-with-libcxx
     - TOOLCHAIN=clang_libstdcxx
-    # - TOOLCHAIN=gcc, Not fully supported on Linux: https://github.com/travis-ci-tester/travis-test-gcc-cxx-11
     - TOOLCHAIN=gcc48
     - TOOLCHAIN=analyze
     - TOOLCHAIN=sanitize_address
@@ -30,7 +28,7 @@ install:
     - sudo apt-get install cmake
     - sudo apt-get install libcurl3-dev
     # install cmake toolchains and script
-    - POLLY_VERSION="0.4.3"
+    - POLLY_VERSION="0.4.4"
     - wget "https://github.com/ruslo/polly/archive/v${POLLY_VERSION}.tar.gz"
     - tar xf "v${POLLY_VERSION}.tar.gz"
     - export POLLY_ROOT="`pwd`/polly-${POLLY_VERSION}"
@@ -42,7 +40,7 @@ install:
     - openssl sha1 "v${CMAKE_VERSION}.tar.gz"
     - tar xf "v${CMAKE_VERSION}.tar.gz"
     - cd "CMake-${CMAKE_VERSION}"
-    -   build.py --install --toolchain default --config Release --fwd "DCMAKE_USE_SYSTEM_CURL=YES"
+    -   build.py --install --toolchain default --config Release --fwd "CMAKE_USE_SYSTEM_CURL=YES"
     -   export PATH="`pwd`/_install/default/bin:${PATH}"
     - cd ..
     # -- end
