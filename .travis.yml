@@ -13,7 +13,6 @@ env:
     - TOOLCHAIN=analyze
     - TOOLCHAIN=sanitize_address
     - TOOLCHAIN=sanitize_leak
-    - TOOLCHAIN=sanitize_memory
     - TOOLCHAIN=sanitize_thread
 
 install:
