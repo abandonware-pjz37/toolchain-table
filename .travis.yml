@@ -43,6 +43,8 @@ env:
   - TOOLCHAIN=sanitize-leak CONFIG=Debug
   - TOOLCHAIN=sanitize-thread CONFIG=Release
   - TOOLCHAIN=sanitize-thread CONFIG=Debug
+  - TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon CONFIG=Release
+  - TOOLCHAIN=android-ndk-r10e-api-19-armeabi-v7a-neon CONFIG=Debug
 
 matrix:
   exclude:
@@ -99,6 +101,11 @@ install:
   # Installed by install-deps.sh if platform is Linux;
   # directory doesn't exist for OSX --
   - export PATH="`pwd`/cmake-3.4.0-Linux-x86_64/bin:${PATH}"
+  # -- end
+
+  # Installed by install-deps.sh if toolchain is Android
+  # otherwise directory will not exist --
+  - export ANDROID_NDK_r10e="`pwd`/android-ndk-r10e
   # -- end
 
   # install cmake toolchains and script --
