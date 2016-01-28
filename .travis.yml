@@ -58,9 +58,9 @@ matrix:
     - os: linux
       env: TOOLCHAIN=xcode CONFIG=Release
     - os: linux
-      env: TOOLCHAIN=ios-nocodesign CONFIG=Debug
+      env: TOOLCHAIN=ios-nocodesign CONFIG=Debug EXTRA="--iossim"
     - os: linux
-      env: TOOLCHAIN=ios-nocodesign CONFIG=Release
+      env: TOOLCHAIN=ios-nocodesign CONFIG=Release EXTRA="--iossim"
     # -- end
     # TOOLCHAIN=gcc works fine on OSX
     - os: osx
