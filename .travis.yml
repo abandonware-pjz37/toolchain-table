@@ -105,7 +105,7 @@ install:
 
   # Installed by install-deps.sh if toolchain is Android
   # otherwise directory will not exist --
-  - export ANDROID_NDK_r10e="`pwd`/android-ndk-r10e
+  - export ANDROID_NDK_r10e="`pwd`/android-ndk-r10e"
   # -- end
 
   # install cmake toolchains and script --
