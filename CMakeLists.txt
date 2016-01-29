@@ -11,6 +11,11 @@ if(IOS)
   add_test(
       NAME FooTest COMMAND "${CMAKE_COMMAND}" -E echo "iOS testing ignored"
   )
+elseif(ANDROID)
+  # Building .apk, testing: https://github.com/forexample/android-cmake
+  add_test(
+      NAME FooTest COMMAND "${CMAKE_COMMAND}" -E echo "Android testing ignored"
+  )
 else()
   add_test(NAME FooTest COMMAND foo)
 endif()
