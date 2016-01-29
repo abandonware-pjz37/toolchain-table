@@ -1,5 +1,5 @@
-* https://github.com/ruslo/polly/wiki/Travis-support-table
-* https://github.com/ruslo/polly
+* [Travis CI/AppVeyor table](https://github.com/ruslo/polly/wiki/Travis-CI-AppVeyor-support-table)
+* [Polly toolchains](https://github.com/ruslo/polly)
 
 | Linux                           | Mac                             |
 |---------------------------------|---------------------------------|
