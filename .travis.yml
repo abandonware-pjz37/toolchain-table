@@ -4,9 +4,14 @@ os:
   - linux
   - osx
 
+# Container-based infrastructure (Linux)
+# * https://docs.travis-ci.com/user/migrating-from-legacy/#How-can-I-use-container-based-infrastructure%3F
 sudo:
   - false
 
+# Install packages differs for container-based infrastructure
+# * https://docs.travis-ci.com/user/migrating-from-legacy/#How-do-I-install-APT-sources-and-packages%3F
+# * http://stackoverflow.com/a/30925448/2288008
 addons:
   apt:
     sources:
@@ -14,12 +19,13 @@ addons:
     packages:
       - cmake
       - python3
-      # https://github.com/travis-ci-tester/travis-test-clang-cxx-11 --
+
+      # https://github.com/travis-ci-tester/travis-test-clang-cxx-11
       - libstdc++-4.8-dev
-      # -- end
-      # https://github.com/travis-ci-tester/travis-test-gcc-cxx-11 --
+
+      # https://github.com/travis-ci-tester/travis-test-gcc-cxx-11
       - g++-4.8
-      # -- end
+
 env:
   - TOOLCHAIN=default CONFIG=Release
   - TOOLCHAIN=default CONFIG=Debug
@@ -50,14 +56,14 @@ env:
 
 matrix:
   exclude:
-    ## Linux excludes ##
-    # https://github.com/travis-ci-tester/travis-test-clang-with-libcxx --
+    ### Linux excludes ###
+    # https://github.com/travis-ci-tester/travis-test-clang-with-libcxx
     - os: linux
       env: TOOLCHAIN=libcxx CONFIG=Debug
     - os: linux
       env: TOOLCHAIN=libcxx CONFIG=Release
-    # -- end
-    # Xcode is for OSX only --
+
+    # Xcode is for OSX only
     - os: linux
       env: TOOLCHAIN=xcode CONFIG=Debug
     - os: linux
@@ -70,29 +76,27 @@ matrix:
       env: TOOLCHAIN=ios-nocodesign CONFIG=Debug EXTRA="--iossim"
     - os: linux
       env: TOOLCHAIN=ios-nocodesign CONFIG=Release EXTRA="--iossim"
-    # -- end
-    # https://github.com/travis-ci-tester/travis-test-gcc-cxx-11 --
+
+    # https://github.com/travis-ci-tester/travis-test-gcc-cxx-11
     - os: linux
       env: TOOLCHAIN=gcc CONFIG=Debug
     - os: linux
       env: TOOLCHAIN=gcc CONFIG=Release
-    # -- end
 
-    ## OSX excludes ##
+    ### OSX excludes ###
     # TOOLCHAIN=gcc works fine on OSX
     - os: osx
       env: TOOLCHAIN=gcc-4-8 CONFIG=Debug
     - os: osx
       env: TOOLCHAIN=gcc-4-8 CONFIG=Release
-    # -- end
-    # https://github.com/travis-ci-tester/travis-test-mac-clang-address-sanitizer --
+
+    # https://github.com/travis-ci-tester/travis-test-mac-clang-address-sanitizer
     - os: osx
       env: TOOLCHAIN=sanitize-address CONFIG=Release
     - os: osx
       env: TOOLCHAIN=sanitize-address CONFIG=Debug
-    # -- end
 
-    # Linux only --
+    # Linux only
     - os: osx
       env: TOOLCHAIN=sanitize-leak CONFIG=Release
     - os: osx
@@ -101,32 +105,29 @@ matrix:
       env: TOOLCHAIN=sanitize-thread CONFIG=Release
     - os: osx
       env: TOOLCHAIN=sanitize-thread CONFIG=Debug
-    # -- end
 
 install:
   - ./ci/install-deps.sh
 
   # Installed by install-deps.sh if platform is Linux;
-  # directory doesn't exist for OSX --
+  # (directory doesn't exist for OSX)
   - export PATH="`pwd`/cmake-3.4.0-Linux-x86_64/bin:${PATH}"
-  # -- end
 
   # Installed by install-deps.sh if toolchain is Android
-  # otherwise directory will not exist --
+  # (otherwise directory doesn't exist)
   - export ANDROID_NDK_r10e="`pwd`/android-ndk-r10e"
-  # -- end
 
-  # install cmake toolchains and script --
+  # Install Polly toolchains
   - POLLY_VERSION="0.9.0"
   - wget "https://github.com/ruslo/polly/archive/v${POLLY_VERSION}.tar.gz"
   - tar xf "v${POLLY_VERSION}.tar.gz"
   - export PATH="`pwd`/polly-${POLLY_VERSION}/bin:${PATH}"
-  # -- end
 
-  # verify installed cmake --
+  # Check versions of tools
   - which cmake
   - cmake --version
-  # -- end
+  - which python3
+  - python3 --version
 
 script:
   - build.py --toolchain ${TOOLCHAIN} --config ${CONFIG} --verbose --test ${EXTRA}
