@@ -7,7 +7,7 @@ then
   brew install python3
   if [[ "${TOOLCHAIN}" == android-* ]];
   then
-    http://dl.google.com/android/ndk/android-ndk-r10e-darwin-x86_64.bin
+    wget http://dl.google.com/android/ndk/android-ndk-r10e-darwin-x86_64.bin
     chmod +x android-ndk-r10e-darwin-x86_64.bin
     ./android-ndk-r10e-darwin-x86_64.bin &> /dev/null
   fi
