@@ -63,6 +63,10 @@ matrix:
     - os: linux
       env: TOOLCHAIN=xcode CONFIG=Release
     - os: linux
+      env: TOOLCHAIN=osx-10-9 CONFIG=Debug
+    - os: linux
+      env: TOOLCHAIN=osx-10-9 CONFIG=Release
+    - os: linux
       env: TOOLCHAIN=ios-nocodesign CONFIG=Debug EXTRA="--iossim"
     - os: linux
       env: TOOLCHAIN=ios-nocodesign CONFIG=Release EXTRA="--iossim"
