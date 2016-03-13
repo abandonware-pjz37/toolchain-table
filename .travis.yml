@@ -127,8 +127,15 @@ install:
   # Install latest Polly toolchains and scripts
   - wget https://github.com/ruslo/polly/archive/master.zip
   - unzip master.zip
-  - POLLY_SOURCE_DIR="`pwd`/polly-master"
-  - export PATH="${POLLY_SOURCE_DIR}/bin:${PATH}"
+  - POLLY_ROOT="`pwd`/polly-master"
+
+  # Alternatively the exact version can be used:
+  # - POLLY_VERSION=0.10.0
+  # - wget https://github.com/ruslo/polly/archive/v${POLLY_VERSION}.zip
+  # - unzip v${POLLY_VERSION}.zip
+  # - POLLY_ROOT="`pwd`/polly-${POLLY_VERSION}"
+
+  - export PATH="${POLLY_ROOT}/bin:${PATH}"
 
   # Install dependencies (CMake, Android NDK)
   - install-ci-dependencies.py
