@@ -86,6 +86,13 @@ environment:
     - TOOLCHAIN: "mingw"
       CONFIG: Debug
 
+    ###
+    - TOOLCHAIN: "msys"
+      CONFIG: Release
+
+    - TOOLCHAIN: "msys"
+      CONFIG: Debug
+
 install:
   # Python 3
   - cmd: set PATH=C:\Python34-x64;C:\Python34-x64\Scripts;%PATH%
@@ -119,6 +126,12 @@ install:
   # Use MinGW from Qt tools because version is higher
   # * http://www.appveyor.com/docs/installed-software#qt
   - cmd: set MINGW_PATH=C:\Qt\Tools\mingw492_32\bin
+
+  # MSYS2 location
+  - cmd: set MSYS_PATH=C:\msys64\usr\bin
+
+  # If submodules used
+  # - git submodule update --init --recursive
 
 build_script:
   - cmd: python %POLLY_ROOT%\bin\build.py --toolchain "%TOOLCHAIN%" --config "%CONFIG%" --verbose --test
